@@ -18,18 +18,18 @@ Given('I have event data', function () {
 
 When('I send the event to RudderStack', async function () {
   const url = `${process.env.DATA_PLANE_URL}/v1/track`;
-  const encodedKey = Buffer.from(`${process.env.WRITE_KEY}:`).toString('base64'); // Correct Basic Auth format
+  const encodedKey = Buffer.from(`${process.env.WRITE_KEY}:`).toString('base64'); 
 
   try {
     response = await axios.post(url, this.eventPayload, {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Basic ${encodedKey}`, // ✅ fixed
+        'Authorization': `Basic ${encodedKey}`, 
       },
     });
   } catch (err) {
     response = err.response;
-    console.error('❌ Request failed:', response?.status, response?.data);
+    console.error(' Request failed:', response?.status, response?.data);
   }
 });
 
