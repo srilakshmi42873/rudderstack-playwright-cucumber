@@ -10,7 +10,7 @@ Given('I have event data', function () {
     event: 'Automation Test Event',
     userId: 'test-user-001',
     properties: {
-      message: 'RudderStack Event from Cucumber Playwright Script',
+      message: 'RudderStack Event from Cucumber Script',
       timestamp: new Date().toISOString(),
     },
   };
