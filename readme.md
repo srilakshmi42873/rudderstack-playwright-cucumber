@@ -1,8 +1,14 @@
 # RudderStack Automation Framework
 
-This project uses **CucumberJS** to automate the RudderStack platform workflow.
-Sending a backend HTTP request (via axios) to the RudderStack /v1/track API.
-Validating the HTTP response status with assert.
+This is a basic API automation framework using **CucumberJS** and **Axios** to test RudderStack’s HTTP event tracking.
+
+## Features
+
+- Sends event to RudderStack’s `/v1/track` API
+- Reads credentials from `.env` files
+- Uses `assert` to validate HTTP status
+- Supports multiple environments: `dev`, `qa`, `prod`
+- Includes GitHub Actions for daily test run
 
 ## Setup
 

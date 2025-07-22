@@ -1,7 +1,9 @@
 const { Given, When, Then } = require('@cucumber/cucumber');
 const axios = require('axios');
 const assert = require('assert');
-require('dotenv').config();
+require('dotenv').config({
+  path: `.env.${process.env.ENV || 'qa'}`
+});
 
 let response;
 

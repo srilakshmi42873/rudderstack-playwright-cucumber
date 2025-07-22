@@ -1,0 +1,32 @@
+name: Daily API Test
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # Every day at 6:00 AM UTC
+  workflow_dispatch:      # Allows manual trigger
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Create .env.dev from GitHub Secrets
+        run: |
+          echo "DATA_PLANE_URL=${{ secrets.DATA_PLANE_URL }}" > .env.qa
+          echo "WRITE_KEY=${{ secrets.WRITE_KEY }}" >> .env.qa
+
+      - name: Run API Tests
+        env:
+          ENV: dev
+        run: npm run test
